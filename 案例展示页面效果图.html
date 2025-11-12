@@ -190,68 +190,90 @@
             margin-bottom: 48px;
         }
 
-        .metrics-cards {
+        /* 场景卡片 */
+        .scenario-cards {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-bottom: 48px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
         }
 
-        .metric-card {
+        .scenario-card {
             background: white;
-            padding: 32px 24px;
+            padding: 40px 32px;
             border-radius: 16px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
-        .metric-card:hover {
+        .scenario-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
 
-        .metric-icon {
+        .scenario-card-icon {
             font-size: 48px;
             margin-bottom: 16px;
         }
 
-        .metric-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 12px;
-        }
-
-        .metric-value {
-            font-size: 36px;
+        .scenario-card-title {
+            font-size: 20px;
             font-weight: bold;
-            color: #0066FF;
-            margin-bottom: 8px;
-        }
-
-        .metric-sub {
-            font-size: 14px;
-            color: #888;
-        }
-
-        .transition-text {
-            text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
-            border-radius: 16px;
-            border-left: 4px solid #0066FF;
-        }
-
-        .transition-text p {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.8;
+            color: #333;
             margin-bottom: 16px;
         }
 
-        .transition-text .highlight {
+        .scenario-card-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .scenario-card-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #0066FF;
+            margin-bottom: 12px;
+        }
+
+        .scenario-card-sub {
+            font-size: 14px;
+            color: #00C853;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .scenario-card-link {
+            font-size: 14px;
+            color: #0066FF;
+            font-weight: 500;
+        }
+
+        /* 整体指标横条 */
+        .overall-stats {
+            padding: 24px;
+            background: linear-gradient(135deg, #f5f8ff 0%, #e8ecff 100%);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .stat-item {
+            display: inline-block;
+            padding: 0 16px;
+        }
+
+        .stat-item strong {
             color: #0066FF;
             font-weight: bold;
+        }
+
+        .stat-divider {
+            color: #ccc;
+            margin: 0 8px;
         }
 
         .transition-btn {
@@ -376,6 +398,39 @@
             position: absolute;
             left: 0;
             color: #00C853;
+            font-weight: bold;
+        }
+
+        /* Tab导航按钮 */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .tab-btn {
+            padding: 14px 32px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            border-color: #0066FF;
+            color: #0066FF;
+            background: #f5f8ff;
+        }
+
+        .tab-btn.active {
+            background: #0066FF;
+            border-color: #0066FF;
+            color: white;
             font-weight: bold;
         }
 
@@ -524,87 +579,35 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
-        .reviews-grid {
-            display: grid;
-            gap: 32px;
-            margin-bottom: 32px;
+        .reviews-simple {
+            text-align: center;
+            padding: 40px;
         }
 
-        .review-card {
-            background: white;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-left: 4px solid #0066FF;
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .review-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .review-info {
-            flex: 1;
-        }
-
-        .review-name {
-            font-size: 16px;
+        .reviews-simple-title {
+            font-size: 28px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 4px;
+            margin-bottom: 24px;
         }
 
-        .review-role {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .review-stars {
+        .reviews-simple-rating {
+            font-size: 32px;
             color: #FFB300;
-            font-size: 18px;
+            margin-bottom: 24px;
         }
 
-        .review-content {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        .more-reviews {
-            text-align: center;
-        }
-
-        .more-reviews-btn {
+        .reviews-simple-link {
             display: inline-block;
-            padding: 12px 32px;
-            background: white;
+            font-size: 18px;
             color: #0066FF;
-            border: 2px solid #0066FF;
             text-decoration: none;
-            border-radius: 24px;
-            font-size: 15px;
+            font-weight: 500;
             transition: all 0.3s;
         }
 
-        .more-reviews-btn:hover {
-            background: #0066FF;
-            color: white;
+        .reviews-simple-link:hover {
+            text-decoration: underline;
         }
 
         /* ========== 第4部分：联系信息 ========== */
@@ -747,7 +750,7 @@
                     <div class="rating">
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                         <span class="rating-score">4.8/5.0</span>
-                        <span class="rating-count">(4500人评价)</span>
+                        <a href="#reviews" class="rating-count" style="color: #0066FF; text-decoration: none; cursor: pointer;">(4500人评价 →)</a>
                     </div>
                     
                     <div class="usage-stats">
@@ -810,41 +813,46 @@
         <!-- ========== 第2部分：成效数据区 ========== -->
         <section class="section-metrics">
             <h2 class="section-title">核心成效</h2>
-            
-            <div class="metrics-cards">
-                <div class="metric-card">
-                    <div class="metric-icon">👥</div>
-                    <div class="metric-label">使用规模</div>
-                    <div class="metric-value">4,500人</div>
-                    <div class="metric-sub">10,000次任务</div>
+
+            <!-- 上层：3个场景卡片 -->
+            <div class="scenario-cards">
+                <div class="scenario-card" onclick="goToTab(0)">
+                    <div class="scenario-card-icon">📊</div>
+                    <div class="scenario-card-title">简历筛选</div>
+                    <div class="scenario-card-label">效率提升</div>
+                    <div class="scenario-card-value">200%</div>
+                    <div class="scenario-card-sub">3天 → 30分钟</div>
+                    <div class="scenario-card-link">查看详情 →</div>
                 </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">⚡</div>
-                    <div class="metric-label">效率提升</div>
-                    <div class="metric-value">200%</div>
-                    <div class="metric-sub">3天 → 0.5天</div>
+
+                <div class="scenario-card" onclick="goToTab(1)">
+                    <div class="scenario-card-icon">📧</div>
+                    <div class="scenario-card-title">面试通知</div>
+                    <div class="scenario-card-label">零错误率</div>
+                    <div class="scenario-card-value">100%</div>
+                    <div class="scenario-card-sub">1天 → 5分钟</div>
+                    <div class="scenario-card-link">查看详情 →</div>
                 </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">💰</div>
-                    <div class="metric-label">降本效果</div>
-                    <div class="metric-value">2000人天</div>
-                    <div class="metric-sub">约¥400万/年</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-icon">✅</div>
-                    <div class="metric-label">用户满意度</div>
-                    <div class="metric-value">⭐ 4.8</div>
-                    <div class="metric-sub">4500人评价</div>
+
+                <div class="scenario-card" onclick="goToTab(2)">
+                    <div class="scenario-card-icon">⏰</div>
+                    <div class="scenario-card-title">面试提醒</div>
+                    <div class="scenario-card-label">爽约率降低</div>
+                    <div class="scenario-card-value">67%</div>
+                    <div class="scenario-card-sub">15% → 5%</div>
+                    <div class="scenario-card-link">查看详情 →</div>
                 </div>
             </div>
-            
-            <div class="transition-text">
-                <p>💡 这些成效如何实现？我们覆盖了招聘全流程的<span class="highlight">3个关键环节</span>：</p>
-                <p><span class="highlight">简历筛选</span>、<span class="highlight">面试通知</span>、<span class="highlight">面试提醒</span></p>
-                <a href="#story" class="transition-btn">查看详细业务流程 ↓</a>
+
+            <!-- 下层：整体指标横条 -->
+            <div class="overall-stats">
+                <span class="stat-item">👥 累计使用：<strong>4500人</strong></span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item">📊 任务总数：<strong>10000次</strong></span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item">💰 降本效果：<strong>¥400万/年</strong></span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item">⭐ 用户满意度：<strong>4.8/5.0</strong></span>
             </div>
         </section>
 
@@ -901,7 +909,14 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Tab导航按钮 -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchTab(0)">📊 简历筛选</button>
+                <button class="tab-btn" onclick="switchTab(1)">📧 面试通知</button>
+                <button class="tab-btn" onclick="switchTab(2)">⏰ 面试提醒</button>
+            </div>
+
             <!-- 场景1：简历筛选 -->
             <div class="scenario">
                 <div class="scenario-header">
@@ -928,11 +943,11 @@
                 <div class="scenario-block">
                     <div class="scenario-block-title">
                         <span class="icon">✅</span>
-                        <span>数智员工的解决方案</span>
+                        <span>数智员工如何实现？</span>
                     </div>
                     <div class="solution">
                         <strong>工作流程：</strong>上传简历 → 智能解析 → 多维匹配 → 评分排序 → 推荐TOP候选人
-                        
+
                         <ul class="capabilities">
                             <li><strong>智能解析：</strong>支持pdf、word、图片等多种格式，自动提取关键信息</li>
                             <li><strong>多维匹配：</strong>学历、经验、技能、期望薪资等10+维度智能评分</li>
@@ -941,47 +956,10 @@
                         </ul>
                     </div>
                 </div>
-                
-                <div class="scenario-block">
-                    <div class="scenario-block-title">
-                        <span class="icon">📊</span>
-                        <span>实际效果</span>
-                    </div>
-                    <div class="results">
-                        <div class="results-grid">
-                            <div class="result-item">
-                                累计筛选简历
-                                <strong>10,000份</strong>
-                            </div>
-                            <div class="result-item">
-                                处理速度
-                                <strong>500份/30分钟</strong>
-                                <div style="font-size: 12px; color: #00C853; margin-top: 4px;">人工需3天</div>
-                            </div>
-                            <div class="result-item">
-                                效率提升
-                                <strong>200%以上</strong>
-                            </div>
-                            <div class="result-item">
-                                筛选准确率
-                                <strong>92%</strong>
-                                <div style="font-size: 12px; color: #666; margin-top: 4px;">经HR复核验证</div>
-                            </div>
-                            <div class="result-item">
-                                优质候选人发现率
-                                <strong>提升35%</strong>
-                            </div>
-                            <div class="result-item">
-                                HR工作时长
-                                <strong>节省80%</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="scenario-block">
                     <div style="text-align: center; margin-top: 24px;">
-                        <a href="#" class="transition-btn" style="font-size: 16px; padding: 14px 40px;">🚀 立即体验简历筛选</a>
+                        <a href="#" class="transition-btn" style="font-size: 16px; padding: 14px 40px;">🚀 立即体验</a>
                     </div>
                 </div>
             </div>
@@ -1011,11 +989,11 @@
                 <div class="scenario-block">
                     <div class="scenario-block-title">
                         <span class="icon">✅</span>
-                        <span>数智员工的解决方案</span>
+                        <span>数智员工如何实现？</span>
                     </div>
                     <div class="solution">
                         <strong>工作流程：</strong>一键批量发送 → 自动填充信息 → 跟踪确认状态 → 提醒未回复
-                        
+
                         <ul class="capabilities">
                             <li><strong>批量发送：</strong>支持邮件、短信、微信多渠道同时发送</li>
                             <li><strong>智能填充：</strong>自动填入候选人姓名、岗位、时间、地点等个性化信息</li>
@@ -1026,44 +1004,8 @@
                 </div>
 
                 <div class="scenario-block">
-                    <div class="scenario-block-title">
-                        <span class="icon">📊</span>
-                        <span>实际效果</span>
-                    </div>
-                    <div class="results">
-                        <div class="results-grid">
-                            <div class="result-item">
-                                累计发送通知
-                                <strong>1,000次</strong>
-                            </div>
-                            <div class="result-item">
-                                发送速度
-                                <strong>50人/5分钟</strong>
-                                <div style="font-size: 12px; color: #00C853; margin-top: 4px;">人工需1天</div>
-                            </div>
-                            <div class="result-item">
-                                零错误率
-                                <strong>100%</strong>
-                            </div>
-                            <div class="result-item">
-                                确认率提升
-                                <strong>从65% → 85%</strong>
-                            </div>
-                            <div class="result-item">
-                                HR工作量
-                                <strong>节省90%</strong>
-                            </div>
-                            <div class="result-item">
-                                候选人满意度
-                                <strong>提升30%</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="scenario-block">
                     <div style="text-align: center; margin-top: 24px;">
-                        <a href="#" class="transition-btn" style="font-size: 16px; padding: 14px 40px;">🚀 立即体验面试通知</a>
+                        <a href="#" class="transition-btn" style="font-size: 16px; padding: 14px 40px;">🚀 立即体验</a>
                     </div>
                 </div>
             </div>
@@ -1093,11 +1035,11 @@
                 <div class="scenario-block">
                     <div class="scenario-block-title">
                         <span class="icon">✅</span>
-                        <span>数智员工的解决方案</span>
+                        <span>数智员工如何实现？</span>
                     </div>
                     <div class="solution">
                         <strong>工作流程：</strong>自动提醒候选人（前1天、前2小时） → 提醒面试官 → 统计到场率
-                        
+
                         <ul class="capabilities">
                             <li><strong>多次提醒：</strong>面试前1天、前2小时自动发送提醒</li>
                             <li><strong>双向提醒：</strong>同时提醒候选人和面试官，避免双方遗忘</li>
@@ -1108,91 +1050,19 @@
                 </div>
 
                 <div class="scenario-block">
-                    <div class="scenario-block-title">
-                        <span class="icon">📊</span>
-                        <span>实际效果</span>
-                    </div>
-                    <div class="results">
-                        <div class="results-grid">
-                            <div class="result-item">
-                                自动提醒覆盖
-                                <strong>100%</strong>
-                                <div style="font-size: 12px; color: #666; margin-top: 4px;">候选人和面试官</div>
-                            </div>
-                            <div class="result-item">
-                                候选人爽约率
-                                <strong>从15% → 5%</strong>
-                            </div>
-                            <div class="result-item">
-                                HR工作量
-                                <strong>节省每周5小时</strong>
-                            </div>
-                            <div class="result-item">
-                                面试官满意度
-                                <strong>提升40%</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="scenario-block">
                     <div style="text-align: center; margin-top: 24px;">
-                        <a href="#" class="transition-btn" style="font-size: 16px; padding: 14px 40px;">🚀 立即体验面试提醒</a>
+                        <a href="#" class="transition-btn" style="font-size: 16px; padding: 14px 40px;">🚀 立即体验</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ========== 第4部分：用户评价 ========== -->
-        <section class="section-reviews">
-            <h2 class="section-title">用户评价</h2>
-            
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">王</div>
-                        <div class="review-info">
-                            <div class="review-name">王小红</div>
-                            <div class="review-role">招聘主管 | 使用6个月</div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐ 5.0</div>
-                    </div>
-                    <div class="review-content">
-                        "以前筛选500份简历要熬夜3天，现在30分钟就完成了，而且筛出来的候选人质量还更高。最让我惊喜的是，系统能发现我容易忽略的优质候选人。上次招产品经理，它推荐的一个人我差点漏掉，结果面试后发现是个宝藏候选人，现在是团队骨干。每次招聘季都离不开它！"
-                    </div>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">李</div>
-                        <div class="review-info">
-                            <div class="review-name">李明</div>
-                            <div class="review-role">HR专员 | 使用3个月</div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐⭐ 5.0</div>
-                    </div>
-                    <div class="review-content">
-                        "面试通知自动发送太方便了，再也不用担心漏发或发错信息。候选人确认率也明显提高了。而且系统还能追踪谁确认了谁没回复，一目了然。以前我要花一整天逐个发邮件，现在5分钟就搞定，还能腾出时间做更有价值的工作。"
-                    </div>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">张</div>
-                        <div class="review-info">
-                            <div class="review-name">张婷</div>
-                            <div class="review-role">HRBP | 使用9个月</div>
-                        </div>
-                        <div class="review-stars">⭐⭐⭐⭐ 4.5</div>
-                    </div>
-                    <div class="review-content">
-                        "自动提醒功能解决了我的大问题。以前候选人爽约率高达15%，现在只有5%。面试官也不会忘记面试安排了，双方体验都提升了。唯一的建议是希望能增加更多个性化的提醒模板，这样就更完美了。"
-                    </div>
-                </div>
-            </div>
-            
-            <div class="more-reviews">
-                <a href="#" class="more-reviews-btn">查看更多评价（4500条）</a>
+        <section class="section-reviews" id="reviews">
+            <div class="reviews-simple">
+                <h2 class="reviews-simple-title">💬 用户评价</h2>
+                <div class="reviews-simple-rating">⭐⭐⭐⭐⭐ 4.8/5.0</div>
+                <a href="#" class="reviews-simple-link">查看全部4500条真实评价 →</a>
             </div>
         </section>
 
@@ -1246,5 +1116,41 @@
         </div>
         <a href="#" class="floating-contact-btn">立即咨询</a>
     </div>
+
+    <script>
+        // Tab切换功能
+        function switchTab(index) {
+            // 隐藏所有场景
+            const scenarios = document.querySelectorAll('.scenario');
+            scenarios.forEach((scenario, i) => {
+                scenario.style.display = i === index ? 'block' : 'none';
+            });
+
+            // 更新Tab按钮状态（如果有Tab按钮）
+            const tabs = document.querySelectorAll('.tab-btn');
+            if (tabs.length > 0) {
+                tabs.forEach((tab, i) => {
+                    if (i === index) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // 从核心成效卡片跳转到对应Tab
+        function goToTab(index) {
+            // 切换Tab
+            switchTab(index);
+            // 平滑滚动到业务故事区域
+            document.getElementById('story').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // 页面加载时默认显示第一个场景
+        document.addEventListener('DOMContentLoaded', function() {
+            switchTab(0);
+        });
+    </script>
 </body>
 </html>
