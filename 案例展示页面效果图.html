@@ -140,6 +140,36 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
         }
 
+        /* 核心价值卡片 */
+        .value-highlight-card {
+            background: linear-gradient(135deg, #e8f5ff 0%, #f0f8ff 100%);
+            border: 3px solid #0066FF;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .value-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066FF;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .value-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .value-item {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.8;
+            padding-left: 8px;
+        }
+
         .case-subtitle {
             font-size: 18px;
             color: #FF6D00;
@@ -205,6 +235,47 @@
             color: #333;
         }
 
+        /* 行动按钮组 */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .btn-primary {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            color: white;
+            border: none;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,102,255,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,102,255,0.4);
+        }
+
+        .btn-secondary {
+            padding: 14px 40px;
+            background: white;
+            color: #0066FF;
+            border: 2px solid #0066FF;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f8ff;
+        }
 
         /* 视频弹窗 */
         .video-modal {
@@ -760,29 +831,23 @@
                         <span>人力招聘助手</span>
                         <button class="video-icon-btn" onclick="openVideoModal()" title="观看演示视频">▶️</button>
                     </h1>
-                    <div class="case-subtitle">简历筛选效率提升200%</div>
-                    
+
+                    <!-- 核心价值卡片 -->
+                    <div class="value-highlight-card">
+                        <div class="value-title">💡 为什么4500家企业选择我们</div>
+                        <div class="value-items">
+                            <div class="value-item">⚡ 招聘效率提升200%</div>
+                            <div class="value-item">💰 每年节省人力成本400万</div>
+                            <div class="value-item">🎯 覆盖简历筛选到面试全流程</div>
+                        </div>
+                    </div>
+
                     <div class="rating">
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                         <span class="rating-score">4.8/5.0</span>
-                        <a href="#reviews" class="rating-count" style="color: #0066FF; text-decoration: none; cursor: pointer;">(4500人评价 →)</a>
+                        <a href="#reviews" class="rating-count" style="color: #0066FF; text-decoration: none; cursor: pointer;">(查看全部4500条评价 →)</a>
                     </div>
-                    
-                    <div class="usage-stats">
-                        <div class="usage-item">
-                            <span class="usage-icon">👥</span>
-                            <span>4500人使用</span>
-                        </div>
-                        <div class="usage-item">
-                            <span class="usage-icon">📊</span>
-                            <span>10000次任务</span>
-                        </div>
-                        <div class="usage-item">
-                            <span class="usage-icon">⏰</span>
-                            <span>1500天工作时长</span>
-                        </div>
-                    </div>
-                    
+
                     <div class="info-grid">
                         <div class="info-label">服务领域</div>
                         <div class="info-value">人力资源</div>
@@ -798,6 +863,12 @@
                         
                         <div class="info-label">上线时间</div>
                         <div class="info-value">2024-08</div>
+                    </div>
+
+                    <!-- 行动按钮组 -->
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="scrollToStory()">🚀 立即体验</button>
+                        <button class="btn-secondary" onclick="scrollToContact()">📞 联系咨询</button>
                     </div>
                 </div>
             </div>
@@ -1162,6 +1233,21 @@
             if (event.target === modal) {
                 closeVideoModal();
             }
+        }
+
+        // 行动按钮滚动功能
+        function scrollToStory() {
+            document.getElementById('story').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function scrollToContact() {
+            document.querySelector('.section-contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     </script>
 </body>
