@@ -468,8 +468,15 @@
             font-size: 22px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 32px;
+            margin-bottom: 12px;
             text-align: center;
+        }
+
+        .flow-subtitle {
+            font-size: 15px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .flow-content {
@@ -558,6 +565,156 @@
             left: 0;
             color: #00C853;
             font-weight: bold;
+        }
+
+        /* 新流程图样式 */
+        .flow-content-new {
+            margin-bottom: 32px;
+        }
+
+        .flow-row-new {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .flow-step-new {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            min-width: 120px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .flow-step-new.manual {
+            border: 2px solid #e0e0e0;
+        }
+
+        .flow-step-new.ai-node {
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            border: 2px solid #0066FF;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,102,255,0.3);
+        }
+
+        .flow-step-new.ai-node:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,102,255,0.4);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 24px;
+            height: 24px;
+            background: #0066FF;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .flow-step-new.manual .step-number {
+            background: #999;
+        }
+
+        .step-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .step-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .flow-step-new.ai-node .step-name {
+            color: white;
+        }
+
+        .step-type {
+            font-size: 12px;
+            color: #666;
+            padding: 2px 8px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .step-type.ai {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .step-time {
+            font-size: 11px;
+            color: #00ff88;
+            font-weight: bold;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        .flow-arrow-new {
+            font-size: 28px;
+            color: #0066FF;
+            font-weight: bold;
+        }
+
+        /* 流程统计 */
+        .flow-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f5ff, #f0f8ff);
+            border-radius: 12px;
+            margin-top: 32px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+        }
+
+        .stat-icon {
+            font-size: 20px;
+        }
+
+        .stat-label {
+            color: #666;
+        }
+
+        .stat-value {
+            color: #0066FF;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .stat-desc {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .stat-divider {
+            color: #ddd;
+            font-size: 20px;
         }
 
         /* Tab导航按钮 */
@@ -865,49 +1022,115 @@
             <!-- 总体流程图 -->
             <div class="flow-diagram">
                 <div class="flow-title">📊 招聘全流程 - 数智员工参与环节</div>
-                
-                <div class="flow-content">
-                    <div class="flow-row">
-                        <div class="flow-step">发布职位</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">简历收集</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step highlight">
-                            简历筛选
-                            <div class="flow-time">3天 → 30分钟</div>
+                <div class="flow-subtitle">AI覆盖3大核心环节，全流程智能协助</div>
+
+                <div class="flow-content-new">
+                    <!-- 第一行：前5个环节 -->
+                    <div class="flow-row-new">
+                        <div class="flow-step-new manual">
+                            <div class="step-number">1</div>
+                            <div class="step-icon">📝</div>
+                            <div class="step-name">发布岗位</div>
+                            <div class="step-type">人工</div>
                         </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">初筛合格</div>
-                    </div>
-                    
-                    <div class="flow-row">
-                        <div class="flow-step">人工复核</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step highlight">
-                            面试通知
-                            <div class="flow-time">1天 → 5分钟</div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new manual">
+                            <div class="step-number">2</div>
+                            <div class="step-icon">📥</div>
+                            <div class="step-name">简历收集</div>
+                            <div class="step-type">系统</div>
                         </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">等待面试</div>
-                    </div>
-                    
-                    <div class="flow-row">
-                        <div class="flow-step">安排面试</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step highlight">
-                            面试提醒
-                            <div class="flow-time">人工跟进 → 自动提醒</div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new ai-node" onclick="goToTab(0)" title="点击查看详情">
+                            <div class="step-number">3</div>
+                            <div class="step-icon">🤖</div>
+                            <div class="step-name">简历筛选</div>
+                            <div class="step-type ai">AI自动</div>
+                            <div class="step-time">3天→30分钟</div>
                         </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">面试进行</div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new manual">
+                            <div class="step-number">4</div>
+                            <div class="step-icon">📞</div>
+                            <div class="step-name">电话沟通</div>
+                            <div class="step-type">人工</div>
+                        </div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new ai-node" onclick="goToTab(1)" title="点击查看详情">
+                            <div class="step-number">5</div>
+                            <div class="step-icon">🤖</div>
+                            <div class="step-name">面试通知</div>
+                            <div class="step-type ai">AI自动</div>
+                            <div class="step-time">1天→5分钟</div>
+                        </div>
                     </div>
-                    
-                    <div class="flow-row">
-                        <div class="flow-step">面试评估</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">录用决策</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">发放Offer</div>
+
+                    <!-- 第二行：后4个环节 -->
+                    <div class="flow-row-new" style="margin-top: 32px;">
+                        <div class="flow-step-new ai-node" onclick="goToTab(2)" title="点击查看详情">
+                            <div class="step-number">6</div>
+                            <div class="step-icon">🤖</div>
+                            <div class="step-name">面试提醒</div>
+                            <div class="step-type ai">AI自动</div>
+                            <div class="step-time">爽约率↓67%</div>
+                        </div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new manual">
+                            <div class="step-number">7</div>
+                            <div class="step-icon">💼</div>
+                            <div class="step-name">面试执行</div>
+                            <div class="step-type">人工</div>
+                        </div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new manual">
+                            <div class="step-number">8</div>
+                            <div class="step-icon">✅</div>
+                            <div class="step-name">录用决策</div>
+                            <div class="step-type">人工</div>
+                        </div>
+
+                        <div class="flow-arrow-new">→</div>
+
+                        <div class="flow-step-new manual">
+                            <div class="step-number">9</div>
+                            <div class="step-icon">🎉</div>
+                            <div class="step-name">入职管理</div>
+                            <div class="step-type">人工</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 流程统计 -->
+                <div class="flow-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">🤖</span>
+                        <span class="stat-label">AI覆盖率：</span>
+                        <span class="stat-value">33%</span>
+                        <span class="stat-desc">(3/9环节)</span>
+                    </div>
+                    <div class="stat-divider">|</div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-label">效率提升：</span>
+                        <span class="stat-value">200%</span>
+                    </div>
+                    <div class="stat-divider">|</div>
+                    <div class="stat-item">
+                        <span class="stat-icon">💰</span>
+                        <span class="stat-label">人力减负：</span>
+                        <span class="stat-value">300人天/年</span>
                     </div>
                 </div>
             </div>
