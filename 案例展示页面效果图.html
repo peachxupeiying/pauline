@@ -16,13 +16,82 @@
             line-height: 1.6;
             color: #333;
             background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 主布局：左右两栏 */
+        .main-wrapper {
+            display: flex;
+            min-height: 100vh;
+            gap: 0;
+        }
+
+        /* 左侧内容区 */
+        .left-content {
+            flex: 1;
+            max-width: calc(100% - 420px);
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        /* 右侧H5预览区 */
+        .right-preview {
+            width: 420px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .phone-frame {
+            width: 375px;
+            height: 667px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f8f9ff, #fff);
+            border-radius: 32px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .phone-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .phone-title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             background-color: #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
         /* ========== 第1部分：基础信息区 ========== */
@@ -117,10 +186,12 @@
             color: #333;
         }
 
-        .video-placeholder {
+        /* 视频播放按钮 */
+        .video-play-btn {
             width: 100%;
             height: 280px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -128,51 +199,101 @@
             justify-content: center;
             color: white;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
-        .video-placeholder:hover {
+        .video-play-btn:hover {
             transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .play-icon {
-            font-size: 64px;
+        .play-icon-large {
+            font-size: 72px;
             margin-bottom: 16px;
+            animation: pulse 2s infinite;
         }
 
-        .video-text {
-            font-size: 16px;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        .data-cards-alt {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+        .video-btn-text {
+            font-size: 18px;
+            font-weight: 500;
         }
 
-        .data-card-small {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 24px;
-            border-radius: 12px;
+        /* 视频弹窗 */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
             color: white;
+            font-size: 36px;
+            cursor: pointer;
+            z-index: 10001;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-close:hover {
+            opacity: 0.7;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-placeholder-text {
+            padding: 100px 20px;
             text-align: center;
-        }
-
-        .data-card-small .label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .data-card-small .value {
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .data-card-small .sub-value {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-top: 4px;
+            color: #999;
+            font-size: 18px;
         }
 
         /* ========== 第2部分：成效数据区 ========== */
@@ -572,44 +693,6 @@
             margin-top: 4px;
         }
 
-        /* ========== 第4部分：用户评价 ========== */
-        .section-reviews {
-            padding: 80px 80px;
-            background: linear-gradient(to bottom, #fff, #f8f9ff);
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .reviews-simple {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .reviews-simple-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 24px;
-        }
-
-        .reviews-simple-rating {
-            font-size: 32px;
-            color: #FFB300;
-            margin-bottom: 24px;
-        }
-
-        .reviews-simple-link {
-            display: inline-block;
-            font-size: 18px;
-            color: #0066FF;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .reviews-simple-link:hover {
-            text-decoration: underline;
-        }
-
         /* ========== 第4部分：联系信息 ========== */
         .section-contact {
             padding: 60px 80px;
@@ -680,66 +763,13 @@
             border: 2px solid white;
         }
 
-        /* ========== 悬浮联系卡片 ========== */
-        .floating-contact {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: white;
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            width: 240px;
-            z-index: 1000;
-        }
-
-        .floating-contact-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .floating-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .floating-contact-item:last-child {
-            border-bottom: none;
-        }
-
-        .floating-contact-icon {
-            font-size: 18px;
-        }
-
-        .floating-contact-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            border-radius: 8px;
-            text-decoration: none;
-            display: block;
-            margin-top: 16px;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-
-        .floating-contact-btn:hover {
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="main-wrapper">
+        <!-- 左侧内容区 -->
+        <div class="left-content">
+            <div class="container">
         <!-- ========== 第1部分：基础信息区 ========== -->
         <section class="section-basic">
             <div class="basic-content">
@@ -787,25 +817,11 @@
                 </div>
                 
                 <div class="basic-right">
-                    <!-- 如果有视频，显示视频播放器 -->
-                    <div class="video-placeholder">
-                        <div class="play-icon">▶️</div>
-                        <div class="video-text">点击播放演示视频</div>
-                    </div>
-                    
-                    <!-- 如果没有视频，显示核心数据卡片 -->
-                    <!-- <div class="data-cards-alt">
-                        <div class="data-card-small">
-                            <div class="label">💰 节省成本</div>
-                            <div class="value">¥400万</div>
-                            <div class="sub-value">每年</div>
-                        </div>
-                        <div class="data-card-small">
-                            <div class="label">⚡ 效率提升</div>
-                            <div class="value">200%</div>
-                            <div class="sub-value">3天→0.5天</div>
-                        </div>
-                    </div> -->
+                    <!-- 视频播放按钮 -->
+                    <button class="video-play-btn" onclick="openVideoModal()">
+                        <div class="play-icon-large">▶️</div>
+                        <div class="video-btn-text">观看演示视频</div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -1057,15 +1073,6 @@
             </div>
         </section>
 
-        <!-- ========== 第4部分：用户评价 ========== -->
-        <section class="section-reviews" id="reviews">
-            <div class="reviews-simple">
-                <h2 class="reviews-simple-title">💬 用户评价</h2>
-                <div class="reviews-simple-rating">⭐⭐⭐⭐⭐ 4.8/5.0</div>
-                <a href="#" class="reviews-simple-link">查看全部4500条真实评价 →</a>
-            </div>
-        </section>
-
         <!-- ========== 第4部分：联系信息 ========== -->
         <section class="section-contact">
             <div class="contact-content">
@@ -1097,24 +1104,35 @@
                 </div>
             </div>
         </section>
+            </div>
+        </div>
+
+        <!-- 右侧H5预览区 -->
+        <div class="right-preview">
+            <div class="phone-title">📱 H5页面预览</div>
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="phone-placeholder">
+                        <div style="font-size: 48px; margin-bottom: 16px;">📱</div>
+                        <div>H5页面占位符</div>
+                        <div style="font-size: 14px; margin-top: 8px; opacity: 0.7;">375 × 667 px</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- 悬浮联系卡片 -->
-    <div class="floating-contact">
-        <div class="floating-contact-title">💬 需要帮助？</div>
-        <div class="floating-contact-item">
-            <span class="floating-contact-icon">📞</span>
-            <span>135-0177-4212</span>
+    <!-- 视频弹窗 -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-close" onclick="closeVideoModal()">×</button>
+            <div class="video-container">
+                <div class="video-placeholder-text">
+                    视频演示内容占位符<br>
+                    <span style="font-size: 14px; opacity: 0.7;">点击此处可嵌入实际视频</span>
+                </div>
+            </div>
         </div>
-        <div class="floating-contact-item">
-            <span class="floating-contact-icon">📧</span>
-            <span>hr@example.com</span>
-        </div>
-        <div class="floating-contact-item">
-            <span class="floating-contact-icon">💬</span>
-            <span>微信：hr_assistant</span>
-        </div>
-        <a href="#" class="floating-contact-btn">立即咨询</a>
     </div>
 
     <script>
@@ -1151,6 +1169,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             switchTab(0);
         });
+
+        // 视频弹窗功能
+        function openVideoModal() {
+            document.getElementById('videoModal').classList.add('active');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.remove('active');
+        }
+
+        // 点击弹窗外部区域关闭弹窗
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target === modal) {
+                closeVideoModal();
+            }
+        }
     </script>
 </body>
 </html>
