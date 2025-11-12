@@ -731,37 +731,19 @@
             margin-top: 4px;
         }
 
-        /* ========== 第4部分：联系信息 ========== */
-        .section-contact {
-            padding: 60px 80px;
-            background: #fff;
-            color: #333;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .contact-content {
-            text-align: center;
-        }
-
-        .contact-title {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 32px;
-            color: #0066FF;
-        }
-
+        /* ========== 联系信息（在基础信息区内） ========== */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-bottom: 40px;
+            gap: 20px;
         }
 
         .contact-item {
             background: #f8f9ff;
-            padding: 24px;
+            padding: 20px;
             border-radius: 12px;
             border: 2px solid #e0e8ff;
+            text-align: center;
         }
 
         .contact-item-label {
@@ -774,42 +756,6 @@
             font-size: 16px;
             font-weight: bold;
             color: #333;
-        }
-
-        .contact-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            padding: 14px 40px;
-            background: linear-gradient(135deg, #0066FF, #0052CC);
-            color: white;
-            text-decoration: none;
-            border-radius: 28px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0,102,255,0.3);
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,102,255,0.4);
-        }
-
-        .contact-btn.secondary {
-            background: white;
-            color: #0066FF;
-            border: 2px solid #0066FF;
-            box-shadow: none;
-        }
-
-        .contact-btn.secondary:hover {
-            background: #f0f8ff;
-            box-shadow: none;
         }
 
     </style>
@@ -862,6 +808,30 @@
                     <div class="action-buttons">
                         <button class="btn-primary" onclick="scrollToStory()">🚀 立即体验</button>
                         <button class="btn-secondary" onclick="scrollToContact()">📞 联系咨询</button>
+                    </div>
+
+                    <!-- 联系信息 -->
+                    <div id="contact-info" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #e0e0e0;">
+                        <h3 style="font-size: 20px; font-weight: bold; color: #0066FF; margin-bottom: 24px; text-align: center;">📞 联系我们</h3>
+
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-item-label">出品方</div>
+                                <div class="contact-item-value">XX公司数智员工事业部</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-label">产品负责人</div>
+                                <div class="contact-item-value">张XX</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-label">联系电话</div>
+                                <div class="contact-item-value">135-0177-4212</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-label">邮箱</div>
+                                <div class="contact-item-value">hr@example.com</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1114,37 +1084,6 @@
             </div>
         </section>
 
-        <!-- ========== 第4部分：联系信息 ========== -->
-        <section class="section-contact">
-            <div class="contact-content">
-                <h2 class="contact-title">📞 联系我们</h2>
-                
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <div class="contact-item-label">出品方</div>
-                        <div class="contact-item-value">XX公司数智员工事业部</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-label">产品负责人</div>
-                        <div class="contact-item-value">张XX</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-label">联系电话</div>
-                        <div class="contact-item-value">135-0177-4212</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-label">邮箱</div>
-                        <div class="contact-item-value">hr@example.com</div>
-                    </div>
-                </div>
-                
-                <div class="contact-actions">
-                    <a href="#" class="contact-btn">立即试用</a>
-                    <a href="#" class="contact-btn secondary">预约演示</a>
-                    <a href="#" class="contact-btn secondary">下载资料</a>
-                </div>
-            </div>
-        </section>
             </div>
         </div>
 
@@ -1237,7 +1176,7 @@
         }
 
         function scrollToContact() {
-            document.querySelector('.section-contact').scrollIntoView({
+            document.getElementById('contact-info').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
