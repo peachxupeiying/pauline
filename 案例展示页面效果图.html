@@ -140,34 +140,19 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
         }
 
-        /* 核心价值卡片 */
-        .value-highlight-card {
-            background: linear-gradient(135deg, #e8f5ff 0%, #f0f8ff 100%);
-            border: 3px solid #0066FF;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 24px 0;
-        }
-
-        .value-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #0066FF;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .value-items {
+        /* 核心价值点（横向一行） */
+        .value-highlights {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
-        .value-item {
-            font-size: 16px;
-            color: #333;
-            line-height: 1.8;
-            padding-left: 8px;
+        .value-highlights .value-item {
+            font-size: 15px;
+            color: #555;
+            white-space: nowrap;
         }
 
         .case-subtitle {
@@ -843,20 +828,17 @@
                         <button class="video-icon-btn" onclick="openVideoModal()" title="观看演示视频">▶️</button>
                     </h1>
 
-                    <!-- 核心价值卡片 -->
-                    <div class="value-highlight-card">
-                        <div class="value-title">💡 为什么4500家企业选择我们</div>
-                        <div class="value-items">
-                            <div class="value-item">⚡ 招聘效率提升200%</div>
-                            <div class="value-item">💰 每年节省人力成本400万</div>
-                            <div class="value-item">🎯 覆盖简历筛选到面试全流程</div>
-                        </div>
-                    </div>
-
                     <div class="rating">
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                         <span class="rating-score">4.8/5.0</span>
-                        <a href="#reviews" class="rating-count" style="color: #0066FF; text-decoration: none; cursor: pointer;">(查看全部4500条评价 →)</a>
+                        <a href="#reviews" class="rating-count" style="color: #0066FF; text-decoration: none; cursor: pointer;">(45000人评价 →)</a>
+                    </div>
+
+                    <!-- 核心价值点 -->
+                    <div class="value-highlights">
+                        <span class="value-item">⚡ 招聘效率提升200%</span>
+                        <span class="value-item">💰 每年节省人力成本400万</span>
+                        <span class="value-item">🎯 覆盖简历筛选到面试全流程</span>
                     </div>
 
                     <div class="info-grid">
