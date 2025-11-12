@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人力招聘助手 - 数智员工案例展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* ========== 第1部分：基础信息区 ========== */
+        .section-basic {
+            padding: 60px 80px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .basic-content {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .basic-left {
+            flex: 6;
+        }
+
+        .basic-right {
+            flex: 4;
+        }
+
+        .case-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0066FF;
+            margin-bottom: 8px;
+        }
+
+        .case-subtitle {
+            font-size: 18px;
+            color: #FF6D00;
+            margin-bottom: 24px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .stars {
+            color: #FFB300;
+            font-size: 20px;
+        }
+
+        .rating-score {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .rating-count {
+            color: #666;
+        }
+
+        .usage-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding: 16px;
+            background-color: #F5F8FF;
+            border-radius: 8px;
+        }
+
+        .usage-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .usage-icon {
+            font-size: 18px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 12px 20px;
+            font-size: 15px;
+        }
+
+        .info-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .play-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .video-text {
+            font-size: 16px;
+        }
+
+        .data-cards-alt {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .data-card-small {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 24px;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+        }
+
+        .data-card-small .label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .data-card-small .value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .data-card-small .sub-value {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        /* ========== 第2部分：成效数据区 ========== */
+        .section-metrics {
+            padding: 80px 80px;
+            background: linear-gradient(to bottom, #fff 0%, #f8f9ff 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 48px;
+        }
+
+        .metrics-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .metric-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #0066FF;
+            margin-bottom: 8px;
+        }
+
+        .metric-sub {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .transition-text {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+            border-radius: 16px;
+            border-left: 4px solid #0066FF;
+        }
+
+        .transition-text p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .transition-text .highlight {
+            color: #0066FF;
+            font-weight: bold;
+        }
+
+        .transition-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: #0066FF;
+            color: white;
+            text-decoration: none;
+            border-radius: 24px;
+            font-size: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .transition-btn:hover {
+            background-color: #0052CC;
+        }
+
+        /* ========== 第3部分：业务故事 ========== */
+        .section-story {
+            padding: 80px 80px;
+            background-color: #fff;
+        }
+
+        .flow-diagram {
+            background: linear-gradient(to bottom, #f8f9ff, #fff);
+            padding: 48px;
+            border-radius: 16px;
+            margin-bottom: 64px;
+            border: 2px solid #e0e6ff;
+        }
+
+        .flow-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .flow-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .flow-step {
+            padding: 16px 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 15px;
+            color: #333;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .flow-step.highlight {
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            color: white;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .flow-step.highlight::before {
+            content: "🤖";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 20px;
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #0066FF;
+        }
+
+        .flow-time {
+            font-size: 13px;
+            color: #00C853;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .flow-summary {
+            margin-top: 32px;
+            padding: 24px;
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            border-radius: 12px;
+            border-left: 4px solid #00C853;
+        }
+
+        .flow-summary-title {
+            font-weight: bold;
+            color: #2E7D32;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .flow-summary-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .flow-summary-list li {
+            font-size: 14px;
+            color: #555;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .flow-summary-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00C853;
+            font-weight: bold;
+        }
+
+        .scenario {
+            margin-bottom: 64px;
+            padding: 48px;
+            background: #fafbff;
+            border-radius: 16px;
+            border: 2px solid #e8ecff;
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .scenario-icon {
+            font-size: 32px;
+        }
+
+        .scenario-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .scenario-block {
+            margin-bottom: 32px;
+        }
+
+        .scenario-block-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        .scenario-block-title .icon {
+            font-size: 20px;
+        }
+
+        .pain-point {
+            background: #FFF3E0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #FF6D00;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .solution {
+            background: #E8F5E9;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00C853;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .capabilities {
+            list-style: none;
+            margin-top: 16px;
+            padding-left: 0;
+        }
+
+        .capabilities li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #555;
+        }
+
+        .capabilities li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            color: #00C853;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .demo-screenshots {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .screenshot {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            padding: 48px 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px dashed #90CAF9;
+        }
+
+        .screenshot-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .screenshot-label {
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .results {
+            background: linear-gradient(135deg, #E8EAF6, #C5CAE9);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid #0066FF;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .result-item {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .result-item strong {
+            color: #0066FF;
+            font-size: 18px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ========== 第4部分：用户评价 ========== */
+        .section-reviews {
+            padding: 80px 80px;
+            background: linear-gradient(to bottom, #fff, #f8f9ff);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid #0066FF;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .review-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .review-stars {
+            color: #FFB300;
+            font-size: 18px;
+        }
+
+        .review-content {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .more-reviews {
+            text-align: center;
+        }
+
+        .more-reviews-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: white;
+            color: #0066FF;
+            border: 2px solid #0066FF;
+            text-decoration: none;
+            border-radius: 24px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .more-reviews-btn:hover {
+            background: #0066FF;
+            color: white;
+        }
+
+        /* ========== 第4部分：联系信息 ========== */
+        .section-contact {
+            padding: 60px 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 32px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .contact-item-value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-btn.secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* ========== 悬浮联系卡片 ========== */
+        .floating-contact {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            width: 240px;
+            z-index: 1000;
+        }
+
+        .floating-contact-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .floating-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .floating-contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .floating-contact-icon {
+            font-size: 18px;
+        }
+
+        .floating-contact-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            display: block;
+            margin-top: 16px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .floating-contact-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ========== 第1部分：基础信息区 ========== -->
+        <section class="section-basic">
+            <div class="basic-content">
+                <div class="basic-left">
+                    <h1 class="case-title">人力招聘助手</h1>
+                    <div class="case-subtitle">简历筛选效率提升200%</div>
+                    
+                    <div class="rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.8/5.0</span>
+                        <span class="rating-count">(4500人评价)</span>
+                    </div>
+                    
+                    <div class="usage-stats">
+                        <div class="usage-item">
+                            <span class="usage-icon">👥</span>
+                            <span>4500人使用</span>
+                        </div>
+                        <div class="usage-item">
+                            <span class="usage-icon">📊</span>
+                            <span>10000次任务</span>
+                        </div>
+                        <div class="usage-item">
+                            <span class="usage-icon">⏰</span>
+                            <span>1500天工作时长</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-label">服务领域</div>
+                        <div class="info-value">人力资源</div>
+                        
+                        <div class="info-label">面向岗位</div>
+                        <div class="info-value">人事用工 - 招聘管理</div>
+                        
+                        <div class="info-label">覆盖场景</div>
+                        <div class="info-value">简历筛选、面试通知发送、面试提醒</div>
+                        
+                        <div class="info-label">适用范围</div>
+                        <div class="info-value">全国</div>
+                        
+                        <div class="info-label">上线时间</div>
+                        <div class="info-value">2024-08</div>
+                    </div>
+                </div>
+                
+                <div class="basic-right">
+                    <!-- 如果有视频，显示视频播放器 -->
+                    <div class="video-placeholder">
+                        <div class="play-icon">▶️</div>
+                        <div class="video-text">点击播放演示视频</div>
+                    </div>
+                    
+                    <!-- 如果没有视频，显示核心数据卡片 -->
+                    <!-- <div class="data-cards-alt">
+                        <div class="data-card-small">
+                            <div class="label">💰 节省成本</div>
+                            <div class="value">¥400万</div>
+                            <div class="sub-value">每年</div>
+                        </div>
+                        <div class="data-card-small">
+                            <div class="label">⚡ 效率提升</div>
+                            <div class="value">200%</div>
+                            <div class="sub-value">3天→0.5天</div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 第2部分：成效数据区 ========== -->
+        <section class="section-metrics">
+            <h2 class="section-title">核心成效</h2>
+            
+            <div class="metrics-cards">
+                <div class="metric-card">
+                    <div class="metric-icon">👥</div>
+                    <div class="metric-label">使用规模</div>
+                    <div class="metric-value">4,500人</div>
+                    <div class="metric-sub">10,000次任务</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">⚡</div>
+                    <div class="metric-label">效率提升</div>
+                    <div class="metric-value">200%</div>
+                    <div class="metric-sub">3天 → 0.5天</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">💰</div>
+                    <div class="metric-label">降本效果</div>
+                    <div class="metric-value">2000人天</div>
+                    <div class="metric-sub">约¥400万/年</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">✅</div>
+                    <div class="metric-label">用户满意度</div>
+                    <div class="metric-value">⭐ 4.8</div>
+                    <div class="metric-sub">4500人评价</div>
+                </div>
+            </div>
+            
+            <div class="transition-text">
+                <p>💡 这些成效如何实现？我们覆盖了招聘全流程的<span class="highlight">3个关键环节</span>：</p>
+                <p><span class="highlight">简历筛选</span>、<span class="highlight">面试通知</span>、<span class="highlight">面试提醒</span></p>
+                <a href="#story" class="transition-btn">查看详细业务流程 ↓</a>
+            </div>
+        </section>
+
+        <!-- ========== 第3部分：业务故事 ========== -->
+        <section class="section-story" id="story">
+            <h2 class="section-title">业务场景与解决方案</h2>
+            
+            <!-- 总体流程图 -->
+            <div class="flow-diagram">
+                <div class="flow-title">📊 招聘全流程 - 数智员工参与环节</div>
+                
+                <div class="flow-content">
+                    <div class="flow-row">
+                        <div class="flow-step">发布职位</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">简历收集</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step highlight">
+                            简历筛选
+                            <div class="flow-time">3天 → 30分钟</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">初筛合格</div>
+                    </div>
+                    
+                    <div class="flow-row">
+                        <div class="flow-step">人工复核</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step highlight">
+                            面试通知
+                            <div class="flow-time">1天 → 5分钟</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">等待面试</div>
+                    </div>
+                    
+                    <div class="flow-row">
+                        <div class="flow-step">安排面试</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step highlight">
+                            面试提醒
+                            <div class="flow-time">人工跟进 → 自动提醒</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">面试进行</div>
+                    </div>
+                    
+                    <div class="flow-row">
+                        <div class="flow-step">面试评估</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">录用决策</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">发放Offer</div>
+                    </div>
+                </div>
+                
+                <div class="flow-summary">
+                    <div class="flow-summary-title">【改造成果】</div>
+                    <ul class="flow-summary-list">
+                        <li>招聘周期：45天 → 28天</li>
+                        <li>HR工作量：减少60%</li>
+                        <li>候选人满意度：82分 → 94分</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 场景1：简历筛选 -->
+            <div class="scenario">
+                <div class="scenario-header">
+                    <span class="scenario-icon">🎯</span>
+                    <h3 class="scenario-title">场景一：简历筛选</h3>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">❌</span>
+                        <span>改造前的痛点</span>
+                    </div>
+                    <div class="pain-point">
+                        每次招聘收到200-500份简历，HR需要逐份查看：
+                        <ul style="margin: 12px 0 0 20px;">
+                            <li>人工筛选耗时：3-5天</li>
+                            <li>筛选标准不统一，主观性强</li>
+                            <li>优质候选人可能被遗漏</li>
+                            <li>重复工作多，HR工作压力大</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">✅</span>
+                        <span>数智员工的解决方案</span>
+                    </div>
+                    <div class="solution">
+                        <strong>工作流程：</strong>上传简历 → 智能解析 → 多维匹配 → 评分排序 → 推荐TOP候选人
+                        
+                        <ul class="capabilities">
+                            <li><strong>智能解析：</strong>支持pdf、word、图片等多种格式，自动提取关键信息</li>
+                            <li><strong>多维匹配：</strong>学历、经验、技能、期望薪资等10+维度智能评分</li>
+                            <li><strong>智能评分：</strong>根据岗位要求自动打分排序，推荐最匹配候选人</li>
+                            <li><strong>推荐理由：</strong>自动生成匹配度分析报告，辅助HR决策</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">🎬</span>
+                        <span>工作演示</span>
+                    </div>
+                    <div class="demo-screenshots">
+                        <div class="screenshot">
+                            <div class="screenshot-icon">📁</div>
+                            <div class="screenshot-label">简历上传界面<br>拖拽上传500份简历</div>
+                        </div>
+                        <div class="screenshot">
+                            <div class="screenshot-icon">📊</div>
+                            <div class="screenshot-label">智能筛选结果<br>初筛通过：85人（匹配度>80%）<br>重点关注：12人（匹配度>90%）</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">📊</span>
+                        <span>实际效果</span>
+                    </div>
+                    <div class="results">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                累计筛选简历
+                                <strong>10,000份</strong>
+                            </div>
+                            <div class="result-item">
+                                处理速度
+                                <strong>500份/30分钟</strong>
+                                <div style="font-size: 12px; color: #00C853; margin-top: 4px;">人工需3天</div>
+                            </div>
+                            <div class="result-item">
+                                效率提升
+                                <strong>200%以上</strong>
+                            </div>
+                            <div class="result-item">
+                                筛选准确率
+                                <strong>92%</strong>
+                                <div style="font-size: 12px; color: #666; margin-top: 4px;">经HR复核验证</div>
+                            </div>
+                            <div class="result-item">
+                                优质候选人发现率
+                                <strong>提升35%</strong>
+                            </div>
+                            <div class="result-item">
+                                HR工作时长
+                                <strong>节省80%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 场景2：面试通知发送 -->
+            <div class="scenario">
+                <div class="scenario-header">
+                    <span class="scenario-icon">🎯</span>
+                    <h3 class="scenario-title">场景二：面试通知发送</h3>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">❌</span>
+                        <span>改造前的痛点</span>
+                    </div>
+                    <div class="pain-point">
+                        <ul style="margin: 0 0 0 20px;">
+                            <li>人工逐个发送邮件/短信，耗时1天</li>
+                            <li>通知内容易出错（时间、地点、面试官姓名）</li>
+                            <li>候选人确认情况难以统计</li>
+                            <li>未回复候选人需要人工二次提醒</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">✅</span>
+                        <span>数智员工的解决方案</span>
+                    </div>
+                    <div class="solution">
+                        <strong>工作流程：</strong>一键批量发送 → 自动填充信息 → 跟踪确认状态 → 提醒未回复
+                        
+                        <ul class="capabilities">
+                            <li><strong>批量发送：</strong>支持邮件、短信、微信多渠道同时发送</li>
+                            <li><strong>智能填充：</strong>自动填入候选人姓名、岗位、时间、地点等个性化信息</li>
+                            <li><strong>确认追踪：</strong>实时统计确认/拒绝/未回复状态，一目了然</li>
+                            <li><strong>自动提醒：</strong>对未回复候选人自动发送二次提醒</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">🎬</span>
+                        <span>工作演示</span>
+                    </div>
+                    <div class="demo-screenshots">
+                        <div class="screenshot">
+                            <div class="screenshot-icon">📧</div>
+                            <div class="screenshot-label">批量发送界面<br>选择候选人 → 选择通知模板 → 一键发送</div>
+                        </div>
+                        <div class="screenshot">
+                            <div class="screenshot-icon">📈</div>
+                            <div class="screenshot-label">通知追踪看板<br>已发送：50人<br>已确认：38人（76%）<br>未回复：7人（自动提醒中）</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">📊</span>
+                        <span>实际效果</span>
+                    </div>
+                    <div class="results">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                累计发送通知
+                                <strong>1,000次</strong>
+                            </div>
+                            <div class="result-item">
+                                发送速度
+                                <strong>50人/5分钟</strong>
+                                <div style="font-size: 12px; color: #00C853; margin-top: 4px;">人工需1天</div>
+                            </div>
+                            <div class="result-item">
+                                零错误率
+                                <strong>100%</strong>
+                            </div>
+                            <div class="result-item">
+                                确认率提升
+                                <strong>从65% → 85%</strong>
+                            </div>
+                            <div class="result-item">
+                                HR工作量
+                                <strong>节省90%</strong>
+                            </div>
+                            <div class="result-item">
+                                候选人满意度
+                                <strong>提升30%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 场景3：面试提醒 -->
+            <div class="scenario">
+                <div class="scenario-header">
+                    <span class="scenario-icon">🎯</span>
+                    <h3 class="scenario-title">场景三：面试提醒</h3>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">❌</span>
+                        <span>改造前的痛点</span>
+                    </div>
+                    <div class="pain-point">
+                        <ul style="margin: 0 0 0 20px;">
+                            <li>HR需要手动记录并提前1天提醒候选人</li>
+                            <li>候选人爽约率10-15%，影响招聘进度</li>
+                            <li>面试官经常忘记面试安排</li>
+                            <li>人工提醒容易遗漏，体验差</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">✅</span>
+                        <span>数智员工的解决方案</span>
+                    </div>
+                    <div class="solution">
+                        <strong>工作流程：</strong>自动提醒候选人（前1天、前2小时） → 提醒面试官 → 统计到场率
+                        
+                        <ul class="capabilities">
+                            <li><strong>多次提醒：</strong>面试前1天、前2小时自动发送提醒</li>
+                            <li><strong>双向提醒：</strong>同时提醒候选人和面试官，避免双方遗忘</li>
+                            <li><strong>智能追踪：</strong>实时统计候选人确认状态和到场情况</li>
+                            <li><strong>异常预警：</strong>候选人未确认时及时提醒HR跟进</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">🎬</span>
+                        <span>工作演示</span>
+                    </div>
+                    <div class="demo-screenshots">
+                        <div class="screenshot">
+                            <div class="screenshot-icon">⏰</div>
+                            <div class="screenshot-label">自动提醒记录<br>候选人张三：前1天提醒✅ 前2小时提醒✅<br>面试官李经理：前30分钟提醒✅</div>
+                        </div>
+                        <div class="screenshot">
+                            <div class="screenshot-icon">📊</div>
+                            <div class="screenshot-label">到场率统计<br>今日面试：10人<br>已到场：9人<br>爽约：1人</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scenario-block">
+                    <div class="scenario-block-title">
+                        <span class="icon">📊</span>
+                        <span>实际效果</span>
+                    </div>
+                    <div class="results">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                自动提醒覆盖
+                                <strong>100%</strong>
+                                <div style="font-size: 12px; color: #666; margin-top: 4px;">候选人和面试官</div>
+                            </div>
+                            <div class="result-item">
+                                候选人爽约率
+                                <strong>从15% → 5%</strong>
+                            </div>
+                            <div class="result-item">
+                                HR工作量
+                                <strong>节省每周5小时</strong>
+                            </div>
+                            <div class="result-item">
+                                面试官满意度
+                                <strong>提升40%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 第4部分：用户评价 ========== -->
+        <section class="section-reviews">
+            <h2 class="section-title">用户评价</h2>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">王</div>
+                        <div class="review-info">
+                            <div class="review-name">王小红</div>
+                            <div class="review-role">招聘主管 | 使用6个月</div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐ 5.0</div>
+                    </div>
+                    <div class="review-content">
+                        "以前筛选500份简历要熬夜3天，现在30分钟就完成了，而且筛出来的候选人质量还更高。最让我惊喜的是，系统能发现我容易忽略的优质候选人。上次招产品经理，它推荐的一个人我差点漏掉，结果面试后发现是个宝藏候选人，现在是团队骨干。每次招聘季都离不开它！"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">李</div>
+                        <div class="review-info">
+                            <div class="review-name">李明</div>
+                            <div class="review-role">HR专员 | 使用3个月</div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐ 5.0</div>
+                    </div>
+                    <div class="review-content">
+                        "面试通知自动发送太方便了，再也不用担心漏发或发错信息。候选人确认率也明显提高了。而且系统还能追踪谁确认了谁没回复，一目了然。以前我要花一整天逐个发邮件，现在5分钟就搞定，还能腾出时间做更有价值的工作。"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">张</div>
+                        <div class="review-info">
+                            <div class="review-name">张婷</div>
+                            <div class="review-role">HRBP | 使用9个月</div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐ 4.5</div>
+                    </div>
+                    <div class="review-content">
+                        "自动提醒功能解决了我的大问题。以前候选人爽约率高达15%，现在只有5%。面试官也不会忘记面试安排了，双方体验都提升了。唯一的建议是希望能增加更多个性化的提醒模板，这样就更完美了。"
+                    </div>
+                </div>
+            </div>
+            
+            <div class="more-reviews">
+                <a href="#" class="more-reviews-btn">查看更多评价（4500条）</a>
+            </div>
+        </section>
+
+        <!-- ========== 第4部分：联系信息 ========== -->
+        <section class="section-contact">
+            <div class="contact-content">
+                <h2 class="contact-title">📞 联系我们</h2>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-item-label">出品方</div>
+                        <div class="contact-item-value">XX公司数智员工事业部</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">产品负责人</div>
+                        <div class="contact-item-value">张XX</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">联系电话</div>
+                        <div class="contact-item-value">135-0177-4212</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">邮箱</div>
+                        <div class="contact-item-value">hr@example.com</div>
+                    </div>
+                </div>
+                
+                <div class="contact-actions">
+                    <a href="#" class="contact-btn">立即试用</a>
+                    <a href="#" class="contact-btn secondary">预约演示</a>
+                    <a href="#" class="contact-btn secondary">下载资料</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 悬浮联系卡片 -->
+    <div class="floating-contact">
+        <div class="floating-contact-title">💬 需要帮助？</div>
+        <div class="floating-contact-item">
+            <span class="floating-contact-icon">📞</span>
+            <span>135-0177-4212</span>
+        </div>
+        <div class="floating-contact-item">
+            <span class="floating-contact-icon">📧</span>
+            <span>hr@example.com</span>
+        </div>
+        <div class="floating-contact-item">
+            <span class="floating-contact-icon">💬</span>
+            <span>微信：hr_assistant</span>
+        </div>
+        <a href="#" class="floating-contact-btn">立即咨询</a>
+    </div>
+</body>
+</html>
