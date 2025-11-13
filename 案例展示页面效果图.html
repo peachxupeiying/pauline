@@ -442,6 +442,18 @@
             margin: 0 8px;
         }
 
+        .applicable-scope {
+            margin-top: 32px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #f8f9ff, #fff);
+            border-radius: 12px;
+            border: 1px solid #e0e8ff;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
         .transition-btn {
             display: inline-block;
             padding: 12px 32px;
@@ -1009,27 +1021,73 @@
                     <div class="info-grid">
                         <div class="info-label">服务领域</div>
                         <div class="info-value">人力资源</div>
-                        
+
                         <div class="info-label">面向岗位</div>
                         <div class="info-value">人事用工 - 招聘管理</div>
-                        
+
                         <div class="info-label">覆盖场景</div>
                         <div class="info-value">简历筛选、面试通知发送、面试提醒</div>
-                        
-                        <div class="info-label">适用范围</div>
-                        <div class="info-value">全国</div>
-                        
-                        <div class="info-label">上线时间</div>
-                        <div class="info-value">2024-08</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== 第2部分：业务故事 ========== -->
+
+        <!-- ========== 第2部分：成效数据区 ========== -->
+        <section class="section-metrics">
+            <h2 class="section-title">核心成效</h2>
+
+            <!-- 上层：3个场景卡片 -->
+            <div class="scenario-cards">
+                <div class="scenario-card" onclick="goToTab(0)">
+                    <div class="scenario-card-icon">📊</div>
+                    <div class="scenario-card-title">简历筛选</div>
+                    <div class="scenario-card-label">效率提升</div>
+                    <div class="scenario-card-value">200%</div>
+                    <div class="scenario-card-sub">3天 → 30分钟</div>
+                    <div class="scenario-card-link">查看详情 →</div>
+                </div>
+
+                <div class="scenario-card" onclick="goToTab(1)">
+                    <div class="scenario-card-icon">📧</div>
+                    <div class="scenario-card-title">面试通知</div>
+                    <div class="scenario-card-label">零错误率</div>
+                    <div class="scenario-card-value">100%</div>
+                    <div class="scenario-card-sub">1天 → 5分钟</div>
+                    <div class="scenario-card-link">查看详情 →</div>
+                </div>
+
+                <div class="scenario-card" onclick="goToTab(2)">
+                    <div class="scenario-card-icon">⏰</div>
+                    <div class="scenario-card-title">面试提醒</div>
+                    <div class="scenario-card-label">爽约率降低</div>
+                    <div class="scenario-card-value">67%</div>
+                    <div class="scenario-card-sub">15% → 5%</div>
+                    <div class="scenario-card-link">查看详情 →</div>
+                </div>
+            </div>
+
+            <!-- 适用范围 -->
+            <div class="applicable-scope">
+                📍 适用范围：全网各省专单位
+            </div>
+
+            <!-- 下层：整体指标横条 -->
+            <div class="overall-stats">
+                <span class="stat-item">👥 使用情况：<strong>4500人订购，来自15省120地市</strong></span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item">📊 工作次数：<strong>10000次</strong></span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item">💰 累计减负：<strong>300人天</strong></span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item">⭐ 用户满意度：<strong>4.8/5.0</strong></span>
+            </div>
+        </section>
+
+        <!-- ========== 第3部分：业务故事 ========== -->
         <section class="section-story" id="story">
             <h2 class="section-title">业务场景与解决方案</h2>
-            
+
             <!-- 总体流程图 -->
             <div class="flow-diagram">
                 <div class="flow-title">📊 招聘全流程 - 数智员工参与环节</div>
@@ -1303,65 +1361,26 @@
             </div>
         </section>
 
-        <!-- ========== 第3部分：成效数据区 ========== -->
-        <section class="section-metrics">
-            <h2 class="section-title">核心成效</h2>
-
-            <!-- 上层：3个场景卡片 -->
-            <div class="scenario-cards">
-                <div class="scenario-card" onclick="goToTab(0)">
-                    <div class="scenario-card-icon">📊</div>
-                    <div class="scenario-card-title">简历筛选</div>
-                    <div class="scenario-card-label">效率提升</div>
-                    <div class="scenario-card-value">200%</div>
-                    <div class="scenario-card-sub">3天 → 30分钟</div>
-                    <div class="scenario-card-link">查看详情 →</div>
-                </div>
-
-                <div class="scenario-card" onclick="goToTab(1)">
-                    <div class="scenario-card-icon">📧</div>
-                    <div class="scenario-card-title">面试通知</div>
-                    <div class="scenario-card-label">零错误率</div>
-                    <div class="scenario-card-value">100%</div>
-                    <div class="scenario-card-sub">1天 → 5分钟</div>
-                    <div class="scenario-card-link">查看详情 →</div>
-                </div>
-
-                <div class="scenario-card" onclick="goToTab(2)">
-                    <div class="scenario-card-icon">⏰</div>
-                    <div class="scenario-card-title">面试提醒</div>
-                    <div class="scenario-card-label">爽约率降低</div>
-                    <div class="scenario-card-value">67%</div>
-                    <div class="scenario-card-sub">15% → 5%</div>
-                    <div class="scenario-card-link">查看详情 →</div>
-                </div>
-            </div>
-
-            <!-- 下层：整体指标横条 -->
-            <div class="overall-stats">
-                <span class="stat-item">👥 累计使用：<strong>4500人</strong></span>
-                <span class="stat-divider">|</span>
-                <span class="stat-item">📊 任务总数：<strong>10000次</strong></span>
-                <span class="stat-divider">|</span>
-                <span class="stat-item">💰 人力减负：<strong>300人天/年</strong></span>
-                <span class="stat-divider">|</span>
-                <span class="stat-item">⭐ 用户满意度：<strong>4.8/5.0</strong></span>
-            </div>
-        </section>
-
         <!-- ========== 使用说明 ========== -->
         <section class="section-usage-guide">
             <div class="usage-guide-container">
                 <h2 class="section-title">📖 使用说明</h2>
 
-                <p class="usage-guide-text">
-                    订购后：① 开通系统权限（简历系统+邮箱系统+候选人信息，需IT协助，1个工作日）<br>
+                <div class="usage-guide-text">
+                    <p><strong>【部署方式】</strong></p>
+                    <p>☁️ 移动云集中部署（推荐）- 申请后直接开通<br>
+                    🔒 本地部署 - 需IT协助部署（约3天）</p>
+
+                    <p style="margin-top: 24px;"><strong>【开通流程】</strong></p>
+                    <p>订购后：<br>
+                    ① 开通系统权限（简历系统+邮箱系统+候选人信息，需IT协助，1个工作日）<br>
                     → ② 完成基础配置（筛选标准+通知模板，5分钟）<br>
-                    → ③ 开始使用（上传简历→AI筛选→发送通知）
-                </p>
+                    → ③ 开始使用（上传简历→AI筛选→发送通知）</p>
+                </div>
 
                 <div class="usage-guide-action">
                     <a href="#" class="manual-btn">📄 查看详细使用手册</a>
+                    <a href="#" class="manual-btn" style="margin-left: 16px;" onclick="openVideoModal()">📺 观看视频教程</a>
                 </div>
             </div>
         </section>
@@ -1373,27 +1392,23 @@
 
                 <div class="contact-grid">
                     <div class="contact-item">
-                        <div class="contact-item-label">出品方</div>
-                        <div class="contact-item-value">XX公司数智员工事业部</div>
+                        <div class="contact-item-label">开发单位</div>
+                        <div class="contact-item-value">XX省公司数智员工团队</div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-label">产品负责人</div>
-                        <div class="contact-item-value">张XX</div>
+                        <div class="contact-item-label">技术支持</div>
+                        <div class="contact-item-value">内线4001 / 企业微信群</div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-label">联系电话</div>
-                        <div class="contact-item-value">135-0177-4212</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-label">邮箱</div>
-                        <div class="contact-item-value">hr@example.com</div>
+                        <div class="contact-item-label">推广咨询</div>
+                        <div class="contact-item-value">集团XX部门 张XX（工号XXXXX）</div>
                     </div>
                 </div>
 
                 <!-- 行动按钮组 -->
                 <div class="action-buttons">
-                    <button class="btn-primary" onclick="scrollToStory()">🚀 立即体验</button>
-                    <button class="btn-secondary" onclick="scrollToContact()">📞 联系咨询</button>
+                    <button class="btn-primary" onclick="scrollToStory()">🚀 申请开通</button>
+                    <button class="btn-secondary" onclick="scrollToContact()">📞 咨询推广</button>
                 </div>
             </div>
         </section>
