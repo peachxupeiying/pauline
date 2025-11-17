@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数智员工人才市场</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(to bottom, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .market-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ========== 页面头部 ========== */
+        .page-header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        /* ========== 筛选区 ========== */
+        .filter-bar {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* ========== 排序区 ========== */
+        .sort-bar {
+            background: white;
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .sort-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .sort-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .sort-btn {
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 13px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sort-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .sort-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: transparent;
+        }
+
+        /* ========== 卡片网格 ========== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        /* ========== 案例卡片样式 ========== */
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+        }
+
+        /* ========== 普通数智员工卡片 ========== */
+        .employee-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e8ecef;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        /* ========== 案例特殊标识徽章 ========== */
+        .case-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ========== 卡片头部 ========== */
+        .card-header {
+            margin-bottom: 16px;
+        }
+
+        .case-card .card-header {
+            padding-top: 32px; /* 为徽章留出空间 */
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .meta-label {
+            color: #999;
+        }
+
+        .meta-value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* ========== 简介 ========== */
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 44px;
+        }
+
+        /* ========== 场景技能展示（案例特有） ========== */
+        .case-scenarios {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #e8ecff;
+        }
+
+        .scenario-title {
+            font-size: 12px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .scenario-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .scenario-item {
+            background: white;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #555;
+            border: 1px solid #e0e6ff;
+        }
+
+        /* ========== 标签组 ========== */
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tag-original {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .tag-non-original {
+            background: #f5f5f5;
+            color: #616161;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tag-challenge {
+            background: #fff3e0;
+            color: #e65100;
+            border: 1px solid #ffcc80;
+        }
+
+        .tag-promotion {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+        }
+
+        /* ========== 统计数据 ========== */
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* ========== 空状态 ========== */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="market-container">
+        <!-- ========== 页面头部 ========== -->
+        <div class="page-header">
+            <h1 class="page-title">🏪 数智员工人才市场</h1>
+            <p class="page-subtitle">展示全网数智员工、智能体和IPA的能力与案例</p>
+
+            <!-- 筛选条件 -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <span class="filter-label">类型：</span>
+                    <button class="filter-btn active">全部</button>
+                    <button class="filter-btn">数智员工</button>
+                    <button class="filter-btn">智能体</button>
+                    <button class="filter-btn">IPA</button>
+                    <button class="filter-btn">案例</button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">领域：</span>
+                    <button class="filter-btn active">全部</button>
+                    <button class="filter-btn">人力资源</button>
+                    <button class="filter-btn">客户服务</button>
+                    <button class="filter-btn">财务管理</button>
+                    <button class="filter-btn">营销推广</button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">组织：</span>
+                    <button class="filter-btn active">全部</button>
+                    <button class="filter-btn">江苏公司</button>
+                    <button class="filter-btn">浙江公司</button>
+                    <button class="filter-btn">广东公司</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 排序选项 ========== -->
+        <div class="sort-bar">
+            <span class="sort-label">排序方式：</span>
+            <div class="sort-options">
+                <button class="sort-btn active">使用量</button>
+                <button class="sort-btn">技能调用量</button>
+                <button class="sort-btn">收藏量</button>
+                <button class="sort-btn">减负效果</button>
+                <button class="sort-btn">创建时间</button>
+            </div>
+        </div>
+
+        <!-- ========== 卡片网格 ========== -->
+        <div class="card-grid">
+
+            <!-- ========== 案例卡片：人力招聘助手 ========== -->
+            <div class="case-card" onclick="window.open('案例展示页面效果图.html', '_blank')">
+                <!-- 案例特殊标识徽章 -->
+                <div class="case-badge">
+                    📋 案例
+                </div>
+
+                <!-- 卡片头部 -->
+                <div class="card-header">
+                    <h3 class="card-title">人力招聘助手</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">江苏公司 · 张三</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">人力资源</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 简介 -->
+                <div class="card-description">
+                    AI驱动的招聘全流程自动化助手，覆盖简历筛选、面试通知、面试提醒等核心场景，帮助企业提升200%招聘效率，累计为4500家企业节省300人天工作量。
+                </div>
+
+                <!-- 场景-技能展示 -->
+                <div class="case-scenarios">
+                    <div class="scenario-title">📊 覆盖场景与技能</div>
+                    <div class="scenario-list">
+                        <div class="scenario-item">简历筛选（3项技能）</div>
+                        <div class="scenario-item">面试通知（2项技能）</div>
+                        <div class="scenario-item">面试提醒（2项技能）</div>
+                    </div>
+                </div>
+
+                <!-- 标签 -->
+                <div class="card-tags">
+                    <span class="tag tag-original">✨ 原创</span>
+                    <span class="tag tag-challenge">🏆 揭榜挂帅</span>
+                    <span class="tag tag-promotion">🚀 复制推广</span>
+                </div>
+
+                <!-- 统计数据 -->
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4500</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">300</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 普通数智员工卡片示例1 ========== -->
+            <div class="employee-card">
+                <div class="card-header">
+                    <h3 class="card-title">智能客服助手</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">浙江公司 · 李四</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">客户服务</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    7x24小时在线的智能客服系统，支持多轮对话、意图识别、知识库问答，解决80%常见客户咨询问题，提升客户满意度。
+                </div>
+
+                <div class="card-tags">
+                    <span class="tag tag-original">✨ 原创</span>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8600</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">520</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 普通数智员工卡片示例2 ========== -->
+            <div class="employee-card">
+                <div class="card-header">
+                    <h3 class="card-title">财务报表分析师</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">广东公司 · 王五</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">财务管理</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    自动化财务报表生成与分析，支持多维度数据对比、趋势预测、异常检测，帮助财务人员快速洞察业务数据。
+                </div>
+
+                <div class="card-tags">
+                    <span class="tag tag-non-original">📄 非原创</span>
+                    <span class="tag tag-promotion">🚀 复制推广</span>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3200</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">180</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 普通数智员工卡片示例3 ========== -->
+            <div class="employee-card">
+                <div class="card-header">
+                    <h3 class="card-title">内容营销专家</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">江苏公司 · 赵六</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">营销推广</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    AI辅助内容创作与营销策划，支持文案生成、海报设计、投放优化，提升营销效率和ROI，适用于多渠道推广。
+                </div>
+
+                <div class="card-tags">
+                    <span class="tag tag-original">✨ 原创</span>
+                    <span class="tag tag-challenge">🏆 揭榜挂帅</span>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">5800</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">420</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 普通数智员工卡片示例4 ========== -->
+            <div class="employee-card">
+                <div class="card-header">
+                    <h3 class="card-title">数据可视化助手</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">浙江公司 · 钱七</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">数据分析</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    智能数据可视化工具，支持多种图表类型、交互式仪表盘、自动化报告生成，让复杂数据一目了然。
+                </div>
+
+                <div class="card-tags">
+                    <span class="tag tag-non-original">📄 非原创</span>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4100</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">260</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 普通数智员工卡片示例5 ========== -->
+            <div class="employee-card">
+                <div class="card-header">
+                    <h3 class="card-title">合同审核专家</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">广东公司 · 孙八</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">法务合规</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    AI驱动的智能合同审核系统，自动识别风险条款、合规性检查、条款对比，大幅提升法务审核效率。
+                </div>
+
+                <div class="card-tags">
+                    <span class="tag tag-original">✨ 原创</span>
+                    <span class="tag tag-promotion">🚀 复制推广</span>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2900</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">150</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 普通数智员工卡片示例6 ========== -->
+            <div class="employee-card">
+                <div class="card-header">
+                    <h3 class="card-title">IT运维监控助手</h3>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">归属：</span>
+                            <span class="meta-value">江苏公司 · 周九</span>
+                        </div>
+                    </div>
+
+                    <div class="card-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">领域：</span>
+                            <span class="meta-value">IT运维</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    7x24小时智能监控系统，支持故障预警、自动诊断、智能告警，确保系统稳定运行，减少运维压力。
+                </div>
+
+                <div class="card-tags">
+                    <span class="tag tag-original">✨ 原创</span>
+                    <span class="tag tag-challenge">🏆 揭榜挂帅</span>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">14</div>
+                        <div class="stat-label">技能数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">6500</div>
+                        <div class="stat-label">使用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">380</div>
+                        <div class="stat-label">人天减负</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 筛选按钮交互
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 同一组内的按钮切换active状态
+                const group = this.closest('.filter-group');
+                group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 排序按钮交互
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 卡片点击效果（除了案例卡片，其他卡片暂时只有点击效果，没有跳转）
+        document.querySelectorAll('.employee-card').forEach(card => {
+            card.addEventListener('click', function() {
+                alert('该数智员工详情页面暂未创建');
+            });
+        });
+    </script>
+</body>
+</html>
